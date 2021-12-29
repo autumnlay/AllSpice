@@ -27,5 +27,10 @@ namespace AllSpice.Repositories
             newRecipe.Id = id;
             return newRecipe;
         }
+        internal List<Recipe> Get()
+        {
+            string sql = "SELECT * FROM recipes";
+            return _db.Query<Recipe>(sql).ToList();
+        }
     }
 }
