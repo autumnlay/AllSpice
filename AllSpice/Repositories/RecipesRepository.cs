@@ -27,10 +27,16 @@ namespace AllSpice.Repositories
             newRecipe.Id = id;
             return newRecipe;
         }
-        internal List<Recipe> Get()
+        internal Recipe Get(int id)
         {
-            string sql = "SELECT * FROM recipes";
-            return _db.Query<Recipe>(sql).ToList();
+            string sql = "SELECT * FROM recipes WHERE id = @id;";
+            return _db.QueryFirstOrDefault<Recipe>(sql, new { id });
+        }
+
+        internal void Remove(int id)
+        {
+            string sql = "DELETE FROM recipes WHERE id = @id LIMIT 1;";
+            _db.Execute(sql, new { id });
         }
     }
 }
