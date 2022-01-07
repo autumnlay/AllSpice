@@ -7,6 +7,7 @@ namespace AllSpice.Models
         public string Subtitle { get; set; }
         public string Category { get; set; }
         public string CreatorId { get; set; }
+        public string ImgUrl { get; set; }
     }
 
 }
